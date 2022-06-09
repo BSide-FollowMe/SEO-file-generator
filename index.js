@@ -13,7 +13,7 @@ setTimeout(() => {
   generateQuestionDetailHTML();
 }, 5000);
 //
-const job2 = schedule.scheduleJob('*/1 * * * *', function () {
+const job2 = schedule.scheduleJob('50 11,23 * * *', function () {
   generateSitemap();
   generatePlantDetailHTML();
   setTimeout(() => {
