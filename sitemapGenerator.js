@@ -15,17 +15,9 @@ const generatePaths = async () => {
 };
 
 exports.generateSitemap = async () => {
+  fs.rmdir('public', () => {});
   fs.mkdir('public', { recursive: true }, (err) => {
-    if (err) throw err;
-  });
-  fs.stat('public/sitemap.xml', function (err, stats) {
-    if (err) {
-      return console.error(err);
-    }
-
-    fs.unlink('public/sitemap.xml', function (err) {
-      if (err) return console.log(err);
-    });
+    if (err) console.log(err);
   });
   const bookmarks = await generatePaths();
   fs.appendFile(

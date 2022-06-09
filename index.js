@@ -7,10 +7,18 @@ const app = express();
 
 const port = app.listen(5050);
 
+generateSitemap();
+generatePlantDetailHTML();
+setTimeout(() => {
+  generateQuestionDetailHTML();
+}, 5000);
+//
 const job2 = schedule.scheduleJob('*/1 * * * *', function () {
   generateSitemap();
   generatePlantDetailHTML();
-  generateQuestionDetailHTML();
+  setTimeout(() => {
+    generateQuestionDetailHTML();
+  }, 5000);
   console.log('requested');
 });
 

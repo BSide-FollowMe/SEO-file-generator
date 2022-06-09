@@ -1,8 +1,8 @@
 FROM node:17.9.0 as build
 
-RUN mkdir /usr/src/lop-user-frontend
+RUN mkdir /usr/src/lop-static-html-generator
 
-WORKDIR /usr/src/lop-user-frontend
+WORKDIR /usr/src/lop-static-html-generator
 
 COPY package.json .
 COPY package-lock.json .
