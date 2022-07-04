@@ -22,15 +22,18 @@ exports.generateSitemap = async () => {
   const bookmarks = await generatePaths();
   fs.appendFile(
     'public/sitemap.xml',
-    `
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${bookmarks
+    `<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">${bookmarks
       .map(
         (bookmark) => `
-  <sitemap>
+  <url>
     <loc>https://www.plantslang.com${bookmark}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
-  </sitemap>`
+  </url>`
       )
       .join('')}
 </urlset>
