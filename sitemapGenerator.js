@@ -15,7 +15,9 @@ const generatePaths = async () => {
 };
 
 exports.generateSitemap = async () => {
-  fs.rmdir('public', () => {});
+  fs.rmdir('public', { recursive: true }, (err) => {
+    if (err) console.log(err);
+  });
   fs.mkdir('public', { recursive: true }, (err) => {
     if (err) console.log(err);
   });

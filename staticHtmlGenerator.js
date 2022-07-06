@@ -3,7 +3,10 @@ const fs = require('fs');
 
 exports.generatePlantDetailHTML = async () => {
   const plants = await getAllPlantIds();
-  fs.rmdir('public/plant', () => {});
+  console.log('asdf');
+  fs.rmdir('public/plant', { recursive: true }, (err) => {
+    if (err) console.log(err);
+  });
   fs.mkdir('public/plant', { recursive: true }, (err) => {
     if (err) console.log(err);
   });
@@ -15,7 +18,9 @@ exports.generatePlantDetailHTML = async () => {
 
 exports.generateQuestionDetailHTML = async () => {
   const questions = await getAllQuestionIds();
-  fs.rmdir('public/qna/detail', () => {});
+  fs.rmdir('public/qna/detail', { recursive: true }, (err) => {
+    if (err) console.log(err);
+  });
   fs.mkdir('public/qna/detail', { recursive: true }, (err) => {
     if (err) console.log(err);
   });
